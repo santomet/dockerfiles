@@ -1,7 +1,7 @@
 # Minimal docker container to build project
 # Image forked: rabits/qt:5.12-desktop
 
-FROM ubuntu:trusty
+FROM ubuntu:16.04
 
 ARG QT_VERSION=5.12.2
 
