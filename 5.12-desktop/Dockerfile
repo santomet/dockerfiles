@@ -4,7 +4,7 @@
 FROM ubuntu:18.04
 MAINTAINER Rabit <home@rabits.org> (@rabits)
 
-ARG QT_VERSION=5.12.0
+ARG QT_VERSION=5.12.2
 
 ENV DEBIAN_FRONTEND=noninteractive \
     QT_PATH=/opt/Qt
