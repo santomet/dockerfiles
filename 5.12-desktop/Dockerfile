@@ -1,8 +1,7 @@
 # Minimal docker container to build project
-# Image: rabits/qt:5.12-desktop
+# Image forked: rabits/qt:5.12-desktop
 
-FROM ubuntu:18.04
-MAINTAINER Rabit <home@rabits.org> (@rabits)
+FROM ubuntu:trusty
 
 ARG QT_VERSION=5.12.2
 
