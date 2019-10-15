@@ -3,7 +3,7 @@
 
 FROM ubuntu:16.04
 
-ARG QT_VERSION=5.12.4
+ARG QT_VERSION=5.12.5
 
 ENV DEBIAN_FRONTEND=noninteractive \
     QT_PATH=/opt/Qt
