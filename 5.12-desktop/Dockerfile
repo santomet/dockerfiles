@@ -25,6 +25,7 @@ RUN apt update && apt full-upgrade -y && apt install -y --no-install-recommends 
     curl \
     build-essential \
     pkg-config \
+    libxkbcommon-x11-dev \
     libgl1-mesa-dev \
     libsm6 \
     libice6 \
