@@ -3,7 +3,7 @@
 
 FROM ubuntu:16.04
 
-ARG QT_VERSION=5.12.7
+ARG QT_VERSION=5.12.5
 
 ENV DEBIAN_FRONTEND=noninteractive \
     QT_PATH=/opt/Qt
@@ -33,6 +33,7 @@ RUN apt update && apt full-upgrade -y && apt install -y --no-install-recommends 
     libxrender1 \
     libfontconfig1 \
     libdbus-1-3 \
+    #
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 
