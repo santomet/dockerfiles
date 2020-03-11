@@ -155,10 +155,11 @@ Controller.prototype.WelcomePageCallback = function() {
     widget.completeChanged.connect(callback);
 }
 Controller.prototype.CredentialsPageCallback = function() {
-	
+	log("Login Page");
 	var login = installer.environmentVariable("QT_CI_LOGIN");
 	var password = installer.environmentVariable("QT_CI_PASSWORD");
 	if (login === "" || password === "") {
+        log("Login or password not detected");
 		gui.clickButton(buttons.CommitButton);
 	}
 	
@@ -166,6 +167,14 @@ Controller.prototype.CredentialsPageCallback = function() {
 	widget.loginWidget.EmailLineEdit.setText(login);
 	widget.loginWidget.PasswordLineEdit.setText(password);
     gui.clickButton(buttons.CommitButton);
+}
+Controller.prototype.ObligationsPageCallback = function()
+{
+    log("ObligationsPageCallback");
+    var page = gui.pageWidgetByObjectName("ObligationsPage");
+    page.obligationsAgreement.setChecked(true);
+    page.completeChanged();
+    gui.clickButton(buttons.NextButton);
 }
 Controller.prototype.ComponentSelectionPageCallback = function() {
     log("ComponentSelectionPageCallback");
