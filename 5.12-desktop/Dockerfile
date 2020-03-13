@@ -10,6 +10,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
 ENV QT_DESKTOP $QT_PATH/${QT_VERSION}/gcc_64
 ENV PATH $QT_DESKTOP/bin:$PATH
 
+RUN export QT_CI_LOGIN=$QT_CI_LOGIN
+RUN export QT_CI_PASSWORD=$QT_CI_PASSWORD
+
 # Install updates & requirements:
 #  * git, openssh-client, ca-certificates - clone & build
 #  * locales, sudo - useful to set utf-8 locale & sudo usage
@@ -44,6 +47,10 @@ RUN curl -Lo /tmp/qt/installer.run "https://download.qt.io/official_releases/qt/
     && QT_CI_PACKAGES=qt.qt5.$(echo "${QT_VERSION}" | tr -d .).gcc_64 /tmp/qt/extract-qt-installer.sh /tmp/qt/installer.run "$QT_PATH" \
     && find "$QT_PATH" -mindepth 1 -maxdepth 1 ! -name "${QT_VERSION}" -exec echo 'Cleaning Qt SDK: {}' \; -exec rm -r '{}' \; \
     && rm -rf /tmp/qt
+
+#remove the credentials so that they wont be available in finished image
+RUN export QT_CI_LOGIN=""
+RUN export QT_CI_PASSWORD=""
 
 # Reconfigure locale
 RUN locale-gen en_US.UTF-8 && dpkg-reconfigure locales
