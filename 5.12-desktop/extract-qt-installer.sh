@@ -156,8 +156,8 @@ Controller.prototype.WelcomePageCallback = function() {
 }
 Controller.prototype.CredentialsPageCallback = function() {
 	log("Login Page");
-	var login = "teslanqtci@dopi.ci";
-	var password = "ThisPassIs123Dummy";
+	var login = installer.environmentVariable("QT_CI_LOGIN");
+	var password = installer.environmentVariable("QT_CI_PASSWORD");
 	if (login === "" || password === "") {
         log("Login or password not detected");
 		gui.clickButton(buttons.CommitButton);
