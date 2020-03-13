@@ -4,6 +4,11 @@
 FROM ubuntu:16.04
 
 ARG QT_VERSION=5.12.7
+ARG QT_CI_LOGIN
+ARG QT_CI_PASSWORD
+
+ENV QT_CI_LOGIN $QT_CI_LOGIN
+ENV QT_CI_PASSWORD $QT_CI_PASSWORD
 
 ENV DEBIAN_FRONTEND=noninteractive \
     QT_PATH=/opt/Qt
@@ -36,6 +41,18 @@ RUN apt update && apt full-upgrade -y && apt install -y --no-install-recommends 
     libxrender1 \
     libfontconfig1 \
     libdbus-1-3 \
+	libarchive-dev \
+	libmediainfo-dev \
+	libpulse-dev \
+	libpulse-mainloop-glib0 \
+	libglib2.0-dev \
+	wget \
+	fuse \
+	libxkbcommon-x11-0 \
+	libegl1-mesa \
+	zip libgstreamer1.0-0 \
+	libgstreamer-plugins-base1.0-0 \
+	libasound2 \
     #
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
