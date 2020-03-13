@@ -24,13 +24,15 @@ function Controller() {
 }
 Controller.prototype.WelcomePageCallback = function() {
     console.log("Welcome Page");
-    gui.clickButton(buttons.NextButton, 3000);
+    gui.clickButton(buttons.NextButton, 20000);
 }
 Controller.prototype.CredentialsPageCallback = function() {
+    console.log("Credentials Page");
     var login = installer.environmentVariable("QT_CI_LOGIN");
     var password = installer.environmentVariable("QT_CI_PASSWORD");
 
     if (login === "" || password === "") {
+        console.log("Credentials not found in ENV");
         gui.clickButton(buttons.CommitButton);
     }
 
@@ -39,6 +41,9 @@ Controller.prototype.CredentialsPageCallback = function() {
     widget.loginWidget.EmailLineEdit.setText(login);
 
     widget.loginWidget.PasswordLineEdit.setText(password);
+    
+    console.log("Credentials found in env");
+    console.log(login);
 
     gui.clickButton(buttons.CommitButton);
 }
