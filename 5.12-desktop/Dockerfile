@@ -50,6 +50,7 @@ RUN apt update && apt full-upgrade -y && apt install -y --no-install-recommends 
 	zip libgstreamer1.0-0 \
 	libgstreamer-plugins-base1.0-0 \
 	libasound2 \
+	file \
     #
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
